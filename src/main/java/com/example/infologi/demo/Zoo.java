@@ -1,9 +1,12 @@
 package com.example.infologi.demo;
+//Lombok dział na zasadzie wavingo -ustawia przed uruchomieniem programu,wstawia sobie kod miedzy kompilacją a uruchomieniem.
+//Spring działa na refleksji.
 
 import com.example.infologi.demo.animals.Animal;
 import com.example.infologi.demo.animals.reptails.Reptail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -24,15 +27,17 @@ public class Zoo implements CommandLineRunner {
     private Reptail lizard;
     private final BufferedReader bufferedReader;
     private String zooName;
+    private ZooDetails zooDetails;
     List<Reptail> reptails;
 
     @Autowired
-    public Zoo(Animal elephant,
-               Animal penguin,
+    public Zoo(@Qualifier("elephant") Animal elephant,
+                Animal penguin,
                BufferedReader bufferedReader,
                @Value("${com.sda.zoo.zoo-name}")
                        String zooName,
-               List<Reptail> reptails) {
+               List<Reptail> reptails,
+               ZooDetails zooDetails) {
         this.elephant = elephant;
         this.penguin = penguin;
         this.reptails = reptails;
