@@ -43,6 +43,7 @@ public class Zoo implements CommandLineRunner {
         this.reptails = reptails;
         this.zooName = zooName;
         this.bufferedReader = bufferedReader;
+        this.zooDetails =zooDetails;
 
     }
 
@@ -56,6 +57,10 @@ public class Zoo implements CommandLineRunner {
         reptails.forEach(Reptail::sound);
 
         log.info(zooName);
+
+        System.out.println("*****************");
+
+        log.info(zooDetails.toString());
 
 
     }
